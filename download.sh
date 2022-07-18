@@ -4,9 +4,14 @@ set -eo pipefail
 API_BASE="https://hacker-news.firebaseio.com/v0"
 HTML_BASE="https://news.ycombinator.com"
 
-curl -s "$API_BASE/user/superb-owl.json" | jq '.submitted[]' > ids.txt
+if [ -z $HN_COOKIE ]; then
+  echo "You need to set HN_COOKIE using a cookie pulled from your browser after logging into news.ycombinator.com"
+  exit 1
+fi
+username=$(echo $HN_COOKIE | sed 's/^user=\(.*\)&.*$/\1/')
+echo "Getting data for $username"
 
-IDS=$(cat ids.txt)
+IDS=$(curl -fsL "$API_BASE/user/$username.json" | jq '.submitted[]')
 
 echo "window.data = [" > data.js
 for ID in $IDS
