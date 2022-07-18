@@ -25,9 +25,8 @@ do
   data=$(echo "${data}" | jq ". +={\"score\": $score}")
   echo "${data}" >> data.js
   echo "," >> data.js
-  #text=$(echo $data | jq -r .text | sed "s/&#x27;/'/g" | sed "s/<p>/\n\n/g" | sed "s/&gt;/>/g" | sed "s/&lt;/</g")
-  #kids=$(echo $data | jq '.kids | length')
-  sleep 1
+
+  sleep 1 # avoid rate limiting
 done
 
 echo "]" >> data.js
