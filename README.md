@@ -23,3 +23,6 @@ This will regenerate `data.js` with your own HN data.
 Use http-server or simply open `index.html` in your browser. You should see your data visualized.
 There are a few options in `chart.js` and `table.js` that can be tweaked to change the visualization.
 This is a work in progress.
+
+## Contributing Data
+I'd like to start compiling a larger dataset here - if you're interested in contributing your data, open up a PR!
