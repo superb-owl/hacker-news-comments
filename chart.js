@@ -14,6 +14,7 @@ data.forEach(d => {
   d.numKids = (d.kids || []).length;
   totalScore += (d.score - 1);
   d.totalScore = totalScore;
+  d.numWithSameScore = data.filter(d2 => d2.score === d.score).length;
 })
 
 
