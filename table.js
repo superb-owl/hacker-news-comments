@@ -66,7 +66,9 @@ $(document).ready(() => {
   window.data.forEach(datum => {
     $('#data-table').append(`
       <tr>
-        <td>${datum.id}</td>
+        <td>
+          <a href="https://news.ycombinator.com/item?id=${datum.id}" target="_blank">${datum.id}</a>
+        </td>
         <td>${new Date(datum.time * 1000).toString().replace(/ GMT.*$/, '')}</td>
         <td>${datum.score}</td>
         <td>${datum.numKids}</td>
